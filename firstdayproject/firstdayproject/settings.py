@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "api",
     "corsheaders",
+    "rest_framework.authtoken",
 ]
 
 MIDDLEWARE = [
@@ -52,6 +53,12 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "corsheaders.middleware.CorsMiddleware",
 ]
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.TokenAuthentication",
+    ],
+}
 
 CORS_ALLOW_ALL_ORIGINS = True
 
