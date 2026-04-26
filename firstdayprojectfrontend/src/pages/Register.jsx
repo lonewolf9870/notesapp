@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from 'axios';
+import api from "../api";
 import { useNavigate } from 'react-router-dom'
 function Register() {
     const [username, setUsername] = useState("")
@@ -8,7 +8,7 @@ function Register() {
 const formSubmission = (e) => {
         e.preventDefault();
 
-        axios.post("http://127.0.0.1:8000/api/register/", {
+        api.post("/register/", {
             "username": username,
             "password": password
         })
@@ -16,7 +16,7 @@ const formSubmission = (e) => {
                 console.log(res.data)
                 setUsername("");
                 setPassword("");
-                alert("registration successfull")
+                alert(res.data.message)
                 navigate("/login")
             })
         .catch((err)=>console.log(err))

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import api from "../api";
 
 function Login() {
     const [username, setUsername] = useState("");
@@ -10,7 +10,7 @@ function Login() {
     const formSubmission = (e) => {
         e.preventDefault();
 
-        axios.post("http://127.0.0.1:8000/api/login/", {
+        api.post("/login/", {
             username,
             password
         })
